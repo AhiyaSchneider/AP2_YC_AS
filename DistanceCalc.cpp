@@ -1,6 +1,7 @@
 #include <vector>
 #include <cmath>
 #include "DistanceCalc.h"
+#include "KnnCalc.h"
 #include <iostream>
 #include <float.h>
 
@@ -94,6 +95,15 @@ public:
     vector<double> getV2()
     {
         return v2;
+    }
+
+    void setV1(vector<double> update)
+    {
+        v1 = update;
+    }
+    void setV2(vector<double> update)
+    {
+        v2 = update;
     }
 
     /**

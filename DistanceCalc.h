@@ -1,6 +1,7 @@
 #ifndef DISTANCECALC_H
 #define DISTANCECALC_H
 #include <vector>
+class KnnCalc; //notify DistanceCalc that this class exists
 
 double euclidean_Distance();
 double manhattan_Distance();

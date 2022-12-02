@@ -3,4 +3,4 @@ project(AP2_YC_AS)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(AP2_YC_AS main.cpp)
+add_executable(AP2_YC_AS main.cpp KnnCalc.cpp KnnCalc.h)
