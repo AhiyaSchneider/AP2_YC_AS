@@ -4,10 +4,15 @@
 
 #ifndef AP2_YC_AS_KNNCALC_H
 #define AP2_YC_AS_KNNCALC_H
-class DistanceCalc; //notify Knn that this class exists
+#include <string>
 
-class KnnCalc {
-
+//notify Knn that this class exists
+class DistanceCalc;
+using namespace std;
+class KnnCalc { //TODO - declare functions and globals
+public:
+    KnnCalc(int j, std::string file, std::string type);
+    void findK_NearestNeighbors();
 
 };
 

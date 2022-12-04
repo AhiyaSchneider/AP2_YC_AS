@@ -4,8 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include<vector>
-#include "KnnCalc.h"
+#include <vector>
+#include <list>
+//#include "KnnCalc.h"
 #include "DistanceCalc.h"
 
 using namespace std;
@@ -13,39 +14,59 @@ using namespace std;
 /**
  * class KnnCalc will use DistaceCalc to calculate a distance from one vector of data to
  * its K neighbors and conclude its kind accordingly
-*/
+ */
 class KnnCalc
 {
 private:
     DistanceCalc calc;
-    int k; // for holding amuont of neighbors chosen by the user (args[0])
-    string inputFile; // args[1] - file to read neighbors from
+    int k;               // for holding amuont of neighbors chosen by the user (args[0])
+    string inputFile;    // args[1] - file to read neighbors from
     string distanceType; // args[2] - chosen metric
-    List<vector> distanceList;
+    list<vector<double>> distanceList;
 
 public:
-    KnnCalc(int k, string file, string type) { // constructor
-        calc = new DistanceCalc; // todo - modify DistanceCalc constructor accordingly - no specific v2
-        this.k = k;
-        this.inputFile = file;
-        this.distanceType = type;
+    // constructor
+    KnnCalc(int j, string file, string type)
+    {                        
+        calc = DistanceCalc(); // done! need to check - modify DistanceCalc constructor accordingly - no specific v2
+        k = j;
+        inputFile = file;
+        distanceType = type;
+
     }
 
-    void findK_NearestNeighbors() {
-        distanceList = new List<vector>;
+    /**
+     * ~KnnCalc - distructor to this class.
+    */
+    ~KnnCalc()
+    {
+    }
+
+
+    void findK_NearestNeighbors()
+    {
+        distanceList = list<vector<double>>();
         ifstream inFile;
-        inFile.open(this.inputFile);
-        if(!inFile.is_open()) { //error openning file
-            cout >> "error openning file"
+        inFile.open(inputFile);
+        if (!inFile.is_open())
+        { // error openning file
+            cout << "error openning file";
             exit(1);
         }
-        while (!inFile.eof()) {
+        // set cin to get input from file
+        ifstream in(inputFile);
+        streambuf *cinbuf = cin.rdbuf(); // save old buf
+        cin.rdbuf(in.rdbuf());                // redirect std::cin to in.txt!
+
+        while (!inFile.eof())
+        {
+            calc.setV2FromFile();
+            distanceList.push_back(calc.getV2());
             // todo - a function for adding new vector to the list - mabye generalize setV2 func - for extracting a vector from a file regardless to its destination after.
+            //getting the vectros already categories according to type (red/white wine etc.)
         }
-        //todo - private partition function for the whole list of vectors extracted from the file
-        //todo - return k first neighbors in the list after partition
+        // todo - private partition function for the whole list of vectors extracted from the file
+        // todo - return k first neighbors in the list after partition
         inFile.close();
-
     }
-
 };

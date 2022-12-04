@@ -1,9 +1,10 @@
 #include <vector>
 #include <cmath>
-#include "DistanceCalc.h"
+//#include "DistanceCalc.h"
 #include "KnnCalc.h"
 #include <iostream>
 #include <float.h>
+#include <string>
 
 
 using namespace std;
@@ -63,13 +64,14 @@ public:
         //get 2 vectors from user.
         v1 = createInputVector();
         v2 = createInputVector();
+        //v2 = vector<double>();
         //check if we can ccalculate distances
-        if (!validVectors())
+        /*if (!validVectors())
         {
             cout << "vector are not valid for distance calculation not same size!\n";
             //cout << v1.size() << "\n" << v2.size();
             exit(1);
-        }
+        }*/
     }
 
     /**
@@ -104,6 +106,10 @@ public:
     void setV2(vector<double> update)
     {
         v2 = update;
+    }
+    void setV2FromFile()
+    {
+        v2 = createInputVector();
     }
 
     /**
@@ -302,6 +308,10 @@ public:
 int main()
 {
     DistanceCalc d;
+    string f = "hello";
+    string j = "utu";
+    KnnCalc k(5, f, j);
+    //k.findK_NearestNeighbors();
     d.printDistances();
     return 0;
 }
