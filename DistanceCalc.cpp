@@ -47,14 +47,14 @@ using namespace std;
     {
         //get 2 vectors from user.
         v1 = createInputVector();
-        v2 = createInputVector();
+        /*v2 = createInputVector();
         //check if we can ccalculate distances
         if (!validVectors())
         {
             cout << "vector are not valid for distance calculation not same size!\n";
             //cout << v1.size() << "\n" << v2.size();
             exit(1);
-        }
+        }*/
     }
 
     /**
