@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <list>
-//#include "KnnCalc.h"
+#include "KnnCalc.h"
 #include "DistanceCalc.h"
 
 using namespace std;
@@ -15,18 +15,8 @@ using namespace std;
  * class KnnCalc will use DistaceCalc to calculate a distance from one vector of data to
  * its K neighbors and conclude its kind accordingly
  */
-class KnnCalc
-{
-private:
-    DistanceCalc calc;
-    int k;               // for holding amuont of neighbors chosen by the user (args[0])
-    string inputFile;    // args[1] - file to read neighbors from
-    string distanceType; // args[2] - chosen metric
-    list<vector<double>> distanceList;
-
-public:
     // constructor
-    KnnCalc(int j, string file, string type)
+    KnnCalc::KnnCalc(int j, string file, string type)
     {                        
         calc = DistanceCalc(); // done! need to check - modify DistanceCalc constructor accordingly - no specific v2
         k = j;
@@ -38,12 +28,12 @@ public:
     /**
      * ~KnnCalc - distructor to this class.
     */
-    ~KnnCalc()
+    KnnCalc::~KnnCalc()
     {
     }
 
 
-    void findK_NearestNeighbors()
+    KnnCalc::void findK_NearestNeighbors()
     {
         distanceList = list<vector<double>>();
         ifstream inFile;
@@ -69,4 +59,3 @@ public:
         // todo - return k first neighbors in the list after partition
         inFile.close();
     }
-};
