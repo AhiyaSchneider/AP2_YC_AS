@@ -15,7 +15,8 @@ private:
     int k;               // for holding amuont of neighbors chosen by the user (args[0])
     string inputFile;    // args[1] - file to read neighbors from
     string distanceType; // args[2] - chosen metric
-    list<vector<double>> distanceList;
+    list<vector<double>> vectorList;
+    list<double> distanceList;
 
 public:
     KnnCalc(int j, std::string file, std::string DistanceType);
