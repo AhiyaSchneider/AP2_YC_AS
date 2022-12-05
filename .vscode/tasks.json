@@ -10,6 +10,7 @@
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/DistanceCalc.cpp",
                 "${fileDirname}/KnnCalc.cpp"
             ],
             "options": {

@@ -4,10 +4,10 @@
 
 #ifndef AP2_YC_AS_KNNCALC_H
 #define AP2_YC_AS_KNNCALC_H
+#include "DistanceCalc.h"
 #include <string>
+#include <list>
 
-//notify Knn that this class exists
-class DistanceCalc;
 using namespace std;
 class KnnCalc { //TODO - declare functions and globals
 private:

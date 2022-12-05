@@ -10,30 +10,24 @@
 #include "DistanceCalc.h"
 
 using namespace std;
-
+//class DistanceCalc;
 /**
  * class KnnCalc will use DistaceCalc to calculate a distance from one vector of data to
  * its K neighbors and conclude its kind accordingly
  */
     // constructor
     KnnCalc::KnnCalc(int j, string file, string type)
-    {                        
-        calc = DistanceCalc(); // done! need to check - modify DistanceCalc constructor accordingly - no specific v2
+    {    
+        //calc already initialized
+
         k = j;
         inputFile = file;
         distanceType = type;
 
     }
 
-    /**
-     * ~KnnCalc - distructor to this class.
-    */
-    KnnCalc::~KnnCalc()
-    {
-    }
 
-
-    KnnCalc::void findK_NearestNeighbors()
+    void KnnCalc::findK_NearestNeighbors()
     {
         distanceList = list<vector<double>>();
         ifstream inFile;
@@ -50,7 +44,7 @@ using namespace std;
 
         while (!inFile.eof())
         {
-            calc.setV2FromFile();
+            calc.SetV2FromFile();
             distanceList.push_back(calc.getV2());
             // todo - a function for adding new vector to the list - mabye generalize setV2 func - for extracting a vector from a file regardless to its destination after.
             //getting the vectros already categories according to type (red/white wine etc.)

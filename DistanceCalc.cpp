@@ -90,6 +90,10 @@ using namespace std;
     {
         v2 = update;
     }
+    void DistanceCalc::SetV2FromFile()
+    {
+        v2 = DistanceCalc::createInputVector();
+    }
 
     /**
      * createInputVector - creating vector from buffer.
