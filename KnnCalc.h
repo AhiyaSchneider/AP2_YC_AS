@@ -18,7 +18,7 @@ private:
     list<vector<double>> distanceList;
 
 public:
-    KnnCalc(int j, std::string file, std::string type);
+    KnnCalc(int j, std::string file, std::string DistanceType);
     void findK_NearestNeighbors();
 
 };
