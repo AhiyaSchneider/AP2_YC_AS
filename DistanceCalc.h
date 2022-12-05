@@ -1,14 +1,33 @@
 #ifndef DISTANCECALC_H
 #define DISTANCECALC_H
 #include <vector>
-class KnnCalc; //notify DistanceCalc that this class exists
+#include <cmath>
+#include <float.h>
+using namespace std;
 
-double euclidean_Distance();
-double manhattan_Distance();
-double chebyshev_Distance();
-double canberra_Distance();
-double minkowski_Distance();
-//bool validVectors(vector<double> v1, vector<double> v2);
-//vector<double> createInputVector();
+class DistanceCalc
+{
+private:
+    const double maxDigits = log10(DBL_MAX);
+    vector<double> v1;
+    vector<double> v2;
+    bool validVectors();
+    void printDouble(double d);
+public:
+    DistanceCalc();
+    ~DistanceCalc();
+    vector<double> getV1();
+    vector<double> getV2();
+    void setV1(vector<double> update);
+    void setV2(vector<double> update);
+    void SetV2FromFile();
+    double euclidean_Distance();
+    double manhattan_Distance();
+    double chebyshev_Distance();
+    double canberra_Distance();
+    double minkowski_Distance();
+    void printDistances();
+    vector<double> createInputVector();
+};
 
 #endif

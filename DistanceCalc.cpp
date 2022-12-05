@@ -1,27 +1,14 @@
 #include <vector>
 #include <cmath>
 #include "DistanceCalc.h"
-#include "KnnCalc.h"
 #include <iostream>
 #include <float.h>
 
-
 using namespace std;
-
-/**
- * class DistanceCalc - set 2 vectors from cin than calculate 5 types of distances on the vectors.
-*/
-class DistanceCalc
-{
-private:
-    const double maxDigits = log10(DBL_MAX);
-    vector<double> v1;
-    vector<double> v2;
-
     /**
      * validVectors - validate if the vectors are the same sizes.
     */
-    bool validVectors()
+    bool DistanceCalc::validVectors()
     {
         // validate by vectors length.
         if (v1.size() != v2.size())
@@ -34,7 +21,7 @@ private:
     /**
      * printDouble - print double as shown in the example.
     */
-    void printDouble(double d)
+    void DistanceCalc::printDouble(double d)
     {
         //check if d is an integer
         if (d == ceil(d) && d == floor(d))
@@ -53,12 +40,10 @@ private:
         cout << "\n";
     }
 
-public:
-
     /**
      * DistanceCalc - constructor to this class
     */
-    DistanceCalc()
+    DistanceCalc::DistanceCalc()
     {
         //get 2 vectors from user.
         v1 = createInputVector();
@@ -75,7 +60,7 @@ public:
     /**
      * ~DistanceCalc - distructor to this class.
     */
-    ~DistanceCalc()
+    DistanceCalc::~DistanceCalc()
     {
     }
 
@@ -83,7 +68,7 @@ public:
      * getV1 - getter for v1.
      * return v1.
     */
-    vector<double> getV1()
+    vector<double>  DistanceCalc::getV1()
     {
         return v1;
     }
@@ -92,25 +77,29 @@ public:
      * getV2 - getter for v2.
      * return v2.
     */
-    vector<double> getV2()
+    vector<double> DistanceCalc::getV2()
     {
         return v2;
     }
 
-    void setV1(vector<double> update)
+    void DistanceCalc::setV1(vector<double> update)
     {
         v1 = update;
     }
-    void setV2(vector<double> update)
+    void DistanceCalc::setV2(vector<double> update)
     {
         v2 = update;
+    }
+    void DistanceCalc::SetV2FromFile()
+    {
+        v2 = DistanceCalc::createInputVector();
     }
 
     /**
      * createInputVector - creating vector from buffer.
      * return vector of double values.
     */
-    vector<double> createInputVector()
+    vector<double> DistanceCalc::createInputVector()
     {
         vector<double> v;
         string input, temp = "";
@@ -197,7 +186,7 @@ public:
      * euclidean_Distance - calculae the distance in euclidean method.
      * return distance.
     */
-    double euclidean_Distance()
+    double DistanceCalc::euclidean_Distance()
     {
         double sum = 0;
         int i;
@@ -213,7 +202,7 @@ public:
      * manhattan_Distance - calculae the distance in manhattan method.
      * return distance.
     */
-    double manhattan_Distance()
+    double DistanceCalc::manhattan_Distance()
     {
         double sum = 0;
         int i;
@@ -229,7 +218,7 @@ public:
      * chebyshev_Distance - calculae the distance in chebyshev method.
      * return distance.
     */
-    double chebyshev_Distance()
+    double DistanceCalc::chebyshev_Distance()
     {
         double sum = 0, max = 0;
         int i;
@@ -249,7 +238,7 @@ public:
      * canberra_Distance - calculae the distance in canberra method.
      * return distance.
     */
-    double canberra_Distance()
+    double DistanceCalc::canberra_Distance()
     {
         double sum = 0, mone, machne;
         int i;
@@ -271,7 +260,7 @@ public:
      * minkowski_Distance - calculae the distance in minkowski method.
      * return distance.
     */
-    double minkowski_Distance()
+    double DistanceCalc::minkowski_Distance()
     {
         double sum = 0;
         int i;
@@ -286,7 +275,7 @@ public:
     /**
     * printDistances - printing all of the distances.
     */
-    void printDistances()
+    void DistanceCalc::printDistances()
     {
         printDouble(euclidean_Distance());
         printDouble(manhattan_Distance());
@@ -294,14 +283,3 @@ public:
         printDouble(canberra_Distance());
         printDouble(minkowski_Distance());
     }  
-};
-
-/**
- * main - run this class and print the distances.
-*/
-int main()
-{
-    DistanceCalc d;
-    d.printDistances();
-    return 0;
-}
