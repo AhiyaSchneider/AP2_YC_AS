@@ -11,7 +11,6 @@ private:
     const double maxDigits = log10(DBL_MAX);
     vector<double> v1;
     vector<double> v2;
-    bool validVectors();
     void printDouble(double d);
 public:
     DistanceCalc();
@@ -28,6 +27,7 @@ public:
     double minkowski_Distance();
     void printDistances();
     vector<double> createInputVector();
+    bool validVectors();
 };
 
 #endif

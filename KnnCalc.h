@@ -6,7 +6,7 @@
 #define AP2_YC_AS_KNNCALC_H
 #include "DistanceCalc.h"
 #include <string>
-#include <list>
+#include <utility>
 
 using namespace std;
 class KnnCalc { //TODO - declare functions and globals
@@ -15,10 +15,11 @@ private:
     int k;               // for holding amuont of neighbors chosen by the user (args[0])
     string inputFile;    // args[1] - file to read neighbors from
     string distanceType; // args[2] - chosen metric
-    list<vector<double>> distanceList;
-
+    vector<vector<double>> vectorList;
+    vector<pair<string, double>> distanceList;
+    
 public:
-    KnnCalc(int j, std::string file, std::string type);
+    KnnCalc(int j, std::string file, std::string DistanceType);
     void findK_NearestNeighbors();
 
 };
