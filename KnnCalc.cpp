@@ -48,10 +48,16 @@ using namespace std;
         {
             istringstream ss(s);
             for (int i = 0; i < v1Length; i++) {
-                
+                string temp;
                 double x;
                 ss >> x;
                 v.push_back(x);
+                if(v.size() == v1Length)
+                {
+                    
+                    ss >> temp;
+                }
+                temp = "";
                 ss.get();
             }
             // todo - a function for adding new vector to the list - mabye generalize setV2 func - for extracting a vector from a file regardless to its destination after.
