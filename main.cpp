@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     try
     {
         string j = argv[1];
-        int kNum = stod(j);//try to set the first argument as int.
+        int kNum = stoi(j);//try to set the first argument as int. take prefix need to change!!!!!!!!
         cout<< "the chosen k:" + kNum + '\n';
         KnnCalc k(kNum, argv[2], argv[3]);
         k.findK_NearestNeighbors();
