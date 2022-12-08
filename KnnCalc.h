@@ -9,20 +9,22 @@
 #include <utility>
 
 using namespace std;
-class KnnCalc { //TODO - declare functions and globals
+class KnnCalc {
 private:
     DistanceCalc calc;
-    int k;               // for holding amuont of neighbors chosen by the user (args[0])
-    string inputFile;    // args[1] - file to read neighbors from
-    string distanceType; // args[2] - chosen metric
+    int k;               // argv[1] for holding amuont of neighbors chosen by the user (args[0])
+    string inputFile;    // argv[2] - file to read neighbors from
+    string distanceType; // argv[3] - chosen metric
     vector<vector<double>> vectorList;
     vector<pair<string, double>> distanceList;
     
 public:
     KnnCalc(int j, std::string file, std::string DistanceType);
-    void findK_NearestNeighbors();
-
+    void setDistanceList();
+    double wantedDist();
+    string TheMostReturnType();
+    void launchCheckVectors();
 };
 
 
-#endif //AP2_YC_AS_KNNCALC_H
+#endif

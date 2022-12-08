@@ -5,6 +5,24 @@
 #include <float.h>
 
 using namespace std;
+
+    /**
+     * DistanceCalc - constructor to this class
+    */
+    DistanceCalc::DistanceCalc()
+    {
+        //get 2 vectors from user.
+        //v1 = createInputVector();
+        //v2 = createInputVector();
+    }
+
+    /**
+     * ~DistanceCalc - distructor to this class.
+    */
+    DistanceCalc::~DistanceCalc()
+    {
+    }
+
     /**
      * validVectors - validate if the vectors are the same sizes.
     */
@@ -41,30 +59,6 @@ using namespace std;
     }
 
     /**
-     * DistanceCalc - constructor to this class
-    */
-    DistanceCalc::DistanceCalc()
-    {
-        //get 2 vectors from user.
-        v1 = createInputVector();
-        //v2 = createInputVector();
-        //check if we can calculate distances
-        /*if (!validVectors())
-        {
-            cout << "vector are not valid for distance calculation not same size!\n";
-            //cout << v1.size() << "\n" << v2.size();
-            exit(1);
-        }*/
-    }
-
-    /**
-     * ~DistanceCalc - distructor to this class.
-    */
-    DistanceCalc::~DistanceCalc()
-    {
-    }
-
-    /**
      * getV1 - getter for v1.
      * return v1.
     */
@@ -82,14 +76,25 @@ using namespace std;
         return v2;
     }
 
+    /**
+     * setV1 - seter to v1
+     * param - the new v1. 
+     */
     void DistanceCalc::setV1(vector<double> update)
     {
         v1 = update;
     }
+
+    /**
+     * setV2 - seter to v2
+     * param - the new v2. 
+     */
     void DistanceCalc::setV2(vector<double> update)
     {
         v2 = update;
     }
+
+    //no use so why?????!
     void DistanceCalc::SetV2FromFile()
     {
         v2 = DistanceCalc::createInputVector();
@@ -188,6 +193,10 @@ using namespace std;
     */
     double DistanceCalc::euclidean_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -204,6 +213,10 @@ using namespace std;
     */
     double DistanceCalc::manhattan_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -220,6 +233,10 @@ using namespace std;
     */
     double DistanceCalc::chebyshev_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0, max = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -240,6 +257,10 @@ using namespace std;
     */
     double DistanceCalc::canberra_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0, mone, machne;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -262,6 +283,10 @@ using namespace std;
     */
     double DistanceCalc::minkowski_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
