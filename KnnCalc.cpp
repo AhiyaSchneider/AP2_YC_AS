@@ -64,10 +64,23 @@ void KnnCalc::setDistanceList()
             double x;
             ss >> x;
             v.push_back(x);
-
             ss.get();
+            //check if there are no numbers in the line
+            if(!ss){
+                cout<<"the file's vectors arent the same length as the given one: shorter\n";
+                exit(1);
+            }
         }
         //works for unclassified file also?
+        /**
+         * check if in ss remained numbers if so exit.
+         * check if the next char of stream is part of number or part of the name.
+         * problem if it is ok but the string start with number?????????????????????!!!!!!!!!!!1
+         */
+        if(ss.peek() >= '0' && ss.peek() <= '9'){                              
+            cout<<"the file's vectors arent the same length as the given one: longer\n";
+            exit(1);
+        }
         ss >> temp;
         calc.setV2(v);
         // TODO - switch case and validation check
