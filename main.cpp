@@ -12,9 +12,10 @@ int main(int argc, char *argv[]) {
     {
         string j = argv[1];
         int kNum = stoi(j);//try to set the first argument as int. take prefix need to change!!!!!!!!
-        cout<< "the chosen k:" + kNum + '\n';
         KnnCalc k(kNum, argv[2], argv[3]);
-        k.findK_NearestNeighbors();
+        k.launchCheckVectors();
+        //k.setDistanceList();
+        //cout<<"the type is: " + k.TheMostReturnType() + '\n';
     }
     catch(const std::exception& e)
     {
