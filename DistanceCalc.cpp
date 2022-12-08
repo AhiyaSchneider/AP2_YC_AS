@@ -46,7 +46,7 @@ using namespace std;
     DistanceCalc::DistanceCalc()
     {
         //get 2 vectors from user.
-        v1 = createInputVector();
+        //v1 = createInputVector();
         //v2 = createInputVector();
         //check if we can calculate distances
         /*if (!validVectors())
@@ -188,6 +188,10 @@ using namespace std;
     */
     double DistanceCalc::euclidean_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -204,6 +208,10 @@ using namespace std;
     */
     double DistanceCalc::manhattan_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -220,6 +228,10 @@ using namespace std;
     */
     double DistanceCalc::chebyshev_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0, max = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -240,6 +252,10 @@ using namespace std;
     */
     double DistanceCalc::canberra_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0, mone, machne;
         int i;
         for (i = 0; i < v1.size(); i++)
@@ -262,6 +278,10 @@ using namespace std;
     */
     double DistanceCalc::minkowski_Distance()
     {
+        if(!validVectors()) {
+            cout << "the vectors not the same length";
+            exit(1);
+        }
         double sum = 0;
         int i;
         for (i = 0; i < v1.size(); i++)
