@@ -4,12 +4,23 @@
 #include <unistd.h>
 using namespace std;
 
-int main() {
+int main(int argc, char *argv[]) {
     //char cwd[2048] = "/home/oem/Desktop/AP1/YC-AS2/datasets/iris/iris_classified.csv";
     //getcwd(cwd, sizeof(cwd));
-    KnnCalc k(10, "/home/oem/Desktop/AP1/YC-AS2/datasets/iris/iris_classified.csv", "MAN");
+    
+    try
+    {
+        string j = argv[1];
+        int kNum = stod(j);//try to set the first argument as int.
+        cout<< "the chosen k:" + kNum + '\n';
+        KnnCalc k(kNum, argv[2], argv[3]);
+        k.findK_NearestNeighbors();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << " invalid k\n"; //if the stoi failed exception trowned.
+    }
     //DistanceCalc d;
     //d.printDistances();
-    k.findK_NearestNeighbors();
     return 0;
 }
