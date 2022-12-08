@@ -26,8 +26,8 @@ KnnCalc::KnnCalc(int j, string file, string type)
     inputFile = file;
     distanceType = type;
 }
-
-void KnnCalc::findK_NearestNeighbors()
+ //change to method only for extract from file and add method that sort and find the k's
+void KnnCalc::setDistanceList()
 {
     ifstream inFile;
     inFile.open(inputFile);
@@ -39,6 +39,7 @@ void KnnCalc::findK_NearestNeighbors()
     int v1Length = calc.getV1().size();
     vector<double> v;
     string s;
+    //maybe to try do the setv2 as another func
     while (getline(inFile, s))
     {
         istringstream ss(s);
@@ -58,7 +59,7 @@ void KnnCalc::findK_NearestNeighbors()
         vectorList.push_back(v);
         pair <string, double> p;
         p.first = temp;
-        p.second = calc.manhattan_Distance();
+        p.second = wantedDist();
         distanceList.push_back(p);
         v.clear();
         temp = "";
@@ -67,6 +68,28 @@ void KnnCalc::findK_NearestNeighbors()
     // todo - return k first neighbors in the list after partition
     inFile.close();
     sort(distanceList.begin(), distanceList.end());
+}
+
+
+
+double KnnCalc::wantedDist(){
+    if(!distanceType.compare("AUC")){
+        return calc.euclidean_Distance();
+    } else if(!distanceType.compare("MAN")){
+        return calc.manhattan_Distance();
+    } else if(!distanceType.compare("CHB")){
+        return calc.chebyshev_Distance();
+    } else if(!distanceType.compare("CAN")) {
+        return calc.canberra_Distance();
+    } else if(!distanceType.compare("MIN")) {
+        return calc.minkowski_Distance();
+    }
+    cout<< "not valid distance";
+    exit(1);
+    return 0;
+}
+
+string KnnCalc::TheMostReturnType(){
     multimap <string, double> distanceMap;
     for (int i = 0; i < k; i++)
     {
@@ -82,6 +105,17 @@ void KnnCalc::findK_NearestNeighbors()
             max.second = it -> first;
         }
     }
-    cout << max.second;
-    
+    return max.second;  
+}
+
+void KnnCalc::launchCheckVectors(){
+    while(true){
+        //reset everything to beggining.
+        vectorList.clear();
+        distanceList.clear();
+        //launch the sequence.
+        calc.setV1(calc.createInputVector());
+        setDistanceList();
+        cout<<"the type is: " + TheMostReturnType() + '\n';
+    }
 }
