@@ -64,25 +64,38 @@ void KnnCalc::setDistanceList()
             double x;
             ss >> x;
             v.push_back(x);
-
             ss.get();
+            //check if there are no numbers in the line
+            if(!ss){
+                cout<<"the file's vectors arent the same length as the given one: shorter\n";
+                exit(1);
+            }
         }
         //works for unclassified file also?
+        /**
+         * check if in ss remained numbers if so exit.
+         * check if the next char of stream is part of number or part of the name.
+         * problem if it is ok but the string start with number?????????????????????!!!!!!!!!!!1
+         */
+        if(ss.peek() >= '0' && ss.peek() <= '9'){                              
+            cout<<"the file's vectors arent the same length as the given one: longer\n";
+            exit(1);
+        }
         ss >> temp;
         calc.setV2(v);
         // TODO - switch case and validation check
         vectorList.push_back(v);
-        pair <string, double> p;
-        p.first = temp;
-        p.second = wantedDist();
-        distanceList.push_back(p);
+        pair <double ,string> p1;
+        p1.second = temp;
+        p1.first = wantedDist();
+        distanceList1.push_back(p1);
         v.clear();
         temp = "";
     }
     // todo - private partition function for the whole list of vectors extracted from the file
     // todo - return k first neighbors in the list after partition
     inFile.close();
-    sort(distanceList.begin(), distanceList.end());
+    sort(distanceList1.begin(), distanceList1.end());
 }
 
 /**
@@ -110,22 +123,22 @@ double KnnCalc::wantedDist(){
  * TheMostReturnType - search from the first k which return the most times.
 */
 string KnnCalc::TheMostReturnType(){
-    multimap <string, double> distanceMap;
+    multimap <string, double> distanceMap1;
     for (int i = 0; i < k; i++)
     {
-        distanceMap.insert(pair<string, double> (distanceList.at(i).first, distanceList.at(i).second));
+        distanceMap1.insert(pair<string,double > (distanceList1.at(i).second, distanceList1.at(i).first));
     }
-    pair <int, string> max;
-    max.first = 0;
-    map<string, double> :: iterator it;
-    for (it = distanceMap.begin(); it != distanceMap.end(); it++)
+    pair <int, string> max1;
+    max1.first = 0;
+    map<string, double> :: iterator it1;
+    for (it1 = distanceMap1.begin(); it1 != distanceMap1.end(); it1++)
     {
-        if(max.first < distanceMap.count(it -> first)) {
-            max.first = distanceMap.count(it -> first);
-            max.second = it -> first;
+        if(max1.first < distanceMap1.count(it1 -> first)) {
+            max1.first = distanceMap1.count(it1 -> first);
+            max1.second = it1 -> first;
         }
     }
-    return max.second;  
+    return max1.second;  
 }
 
 /**
@@ -135,7 +148,7 @@ void KnnCalc::launchCheckVectors(){
     while(true){
         //reset everything to beggining.
         vectorList.clear();
-        distanceList.clear();
+        distanceList1.clear();
         //launch the sequence.
         calc.setV1(calc.createInputVector());
         setDistanceList();
