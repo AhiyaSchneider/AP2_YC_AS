@@ -85,21 +85,16 @@ void KnnCalc::setDistanceList()
         calc.setV2(v);
         // TODO - switch case and validation check
         vectorList.push_back(v);
-        pair <string, double> p;
         pair <double ,string> p1;
-        p.first = temp;
         p1.second = temp;
-        p.second = wantedDist();
         p1.first = wantedDist();
         distanceList1.push_back(p1);
-        distanceList.push_back(p);
         v.clear();
         temp = "";
     }
     // todo - private partition function for the whole list of vectors extracted from the file
     // todo - return k first neighbors in the list after partition
     inFile.close();
-    sort(distanceList.begin(), distanceList.end());
     sort(distanceList1.begin(), distanceList1.end());
 }
 
@@ -128,25 +123,13 @@ double KnnCalc::wantedDist(){
  * TheMostReturnType - search from the first k which return the most times.
 */
 string KnnCalc::TheMostReturnType(){
-    multimap <string, double> distanceMap;
     multimap <string, double> distanceMap1;
     for (int i = 0; i < k; i++)
     {
-        distanceMap.insert(pair<string, double> (distanceList.at(i).first, distanceList.at(i).second));
         distanceMap1.insert(pair<string,double > (distanceList1.at(i).second, distanceList1.at(i).first));
     }
-    pair <int, string> max;
     pair <int, string> max1;
-    max.first = 0;
     max1.first = 0;
-    map<string, double> :: iterator it;
-    for (it = distanceMap.begin(); it != distanceMap.end(); it++)
-    {
-        if(max.first < distanceMap.count(it -> first)) {
-            max.first = distanceMap.count(it -> first);
-            max.second = it -> first;
-        }
-    }
     map<string, double> :: iterator it1;
     for (it1 = distanceMap1.begin(); it1 != distanceMap1.end(); it1++)
     {
@@ -165,7 +148,6 @@ void KnnCalc::launchCheckVectors(){
     while(true){
         //reset everything to beggining.
         vectorList.clear();
-        distanceList.clear();
         distanceList1.clear();
         //launch the sequence.
         calc.setV1(calc.createInputVector());
