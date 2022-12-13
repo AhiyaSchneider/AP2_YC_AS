@@ -17,6 +17,8 @@ private:
     string distanceType; // argv[3] - chosen metric
     vector<vector<double>> vectorList;
     vector<pair<string, double>> distanceList;
+    vector<pair<double, string>> distanceList1;
+
     
 public:
     KnnCalc(int j, std::string file, std::string DistanceType);
