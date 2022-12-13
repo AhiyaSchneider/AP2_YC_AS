@@ -125,8 +125,8 @@ double KnnCalc::wantedDist(){
 string KnnCalc::TheMostReturnType(){
     multimap <string, double> distanceMap1;
     //make sure that k is the smaller between given k and given vectors amount
-    int localK = min(distanceList1.size(), k);
-    for (int i = 0; i < localK; i++)
+    //int localK = std::min(distanceList1.size(), k);
+    for (int i = 0; i < k; i++)
     {
         distanceMap1.insert(pair<string,double > (distanceList1.at(i).second, distanceList1.at(i).first));
     }
