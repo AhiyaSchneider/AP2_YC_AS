@@ -94,12 +94,6 @@ using namespace std;
         v2 = update;
     }
 
-    //no use so why?????!
-    void DistanceCalc::SetV2FromFile()
-    {
-        v2 = DistanceCalc::createInputVector();
-    }
-
     /**
      * createInputVector - creating vector from buffer.
      * return vector of double values.
