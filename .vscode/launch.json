@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}", //this will be at args[0]
-            "args": ["12","//home/oem/Desktop/AP1/YC-AS2/datasets/iris/iris_classified.csv","MAN"],
+            "args": ["12","//home/oem/Desktop/AP1/YC-AS2/datasets/iris/iris_classified.txt","MAN"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

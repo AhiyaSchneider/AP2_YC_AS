@@ -22,6 +22,7 @@ private:
     void setDistanceList();
     double wantedDist();
     string TheMostReturnType();
+    bool validString(std::string s);
     
 
     

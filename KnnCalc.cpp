@@ -58,9 +58,12 @@ void KnnCalc::setDistanceList()
     int v1Length = calc.getV1().size();
     vector<double> v;
     string s;
-    
     while (getline(inFile, s))
     {
+        if(!validString(s)){
+            cout << "one of the vector wasnt ok from file";
+            exit(1);
+        }
         istringstream ss(s);
         string temp;
         for (int i = 0; i < v1Length; i++)
@@ -183,4 +186,49 @@ void KnnCalc::launchCheckVectors()
         setDistanceList();
         cout << "the type is: " + TheMostReturnType() + '\n';
     }
+}
+
+bool KnnCalc::validString(string s)
+{
+    int i = 0, sLen = s.length();
+    int v1Size = calc.getV1().size(), v2Size = 0;
+    bool minusF = false, dotF = false, letterEF = false, numF = false;
+    for(i = 0; i < sLen; i++) {
+        if(v2Size > v1Size){
+            cout << "the vector from the file is longer";
+            exit(1);
+        }else if(s[i] == ',' && numF){
+            v2Size++;
+            minusF = false;
+            dotF = false;
+            letterEF = false;
+            numF = false;
+        }else if(s[i] == '-'){
+            if(numF || minusF){
+                cout<<"there is '-' in wrong place";
+                exit(1);
+            }
+            minusF = true;
+        }else if(s[i] == '.'){
+            if(!numF || dotF){
+                cout<<"there is '.' in wrong place";
+                exit(1);
+            }
+            dotF = true;
+        }else if((s[i] < '0' || s[i] > '9') && v1Size > v2Size){
+            if(s[i] == 'e'){
+                //if(letterEF){
+                //    cout<<"?????????? not sureee"; /////////////////////////////////////////////////////////
+                //}
+                //letterEF = true;
+            }
+            else {
+                cout<< "there is letter where it shoudnt be in the file";
+                exit(1);
+            }
+        } else if(s[i] >= '0' && s[i] <= '9') {
+            numF = true;
+        }
+    }
+    return true;
 }
