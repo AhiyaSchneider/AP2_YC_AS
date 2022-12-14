@@ -1,5 +1,5 @@
-#ifndef DISTANCECALC_H
-#define DISTANCECALC_H
+#ifndef AP2_YC_AS_DISTANCECALC_H
+#define AP2_YC_AS_DISTANCECALC_H
 #include <vector>
 #include <cmath>
 #include <float.h>
