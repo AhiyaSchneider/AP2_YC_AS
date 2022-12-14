@@ -19,7 +19,6 @@ public:
     vector<double> getV2();
     void setV1(vector<double> update);
     void setV2(vector<double> update);
-    void SetV2FromFile();
     double euclidean_Distance();
     double manhattan_Distance();
     double chebyshev_Distance();

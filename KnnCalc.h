@@ -18,12 +18,15 @@ private:
     vector<vector<double>> vectorList;
     vector<pair<double, string>> distanceList1;
 
-    
-public:
-    KnnCalc(int j, std::string file, std::string DistanceType);
+    //private methods:
     void setDistanceList();
     double wantedDist();
     string TheMostReturnType();
+    
+
+    
+public:
+    KnnCalc(int j, std::string file, std::string DistanceType);
     void launchCheckVectors();
 };
 
