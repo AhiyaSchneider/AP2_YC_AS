@@ -205,8 +205,10 @@ bool KnnCalc::validString(string s)
             numF = false;
         }else if(s[i] == '-'){
             if(numF || minusF){
-                cout<<"there is '-' in wrong place";
-                exit(1);
+                if(s[i - 1] != 'e' && s[i - 1] != 'E'){
+                    cout<<"there is '-' in wrong place";
+                    exit(1);
+                }
             }
             minusF = true;
         }else if(s[i] == '.'){
@@ -216,14 +218,15 @@ bool KnnCalc::validString(string s)
             }
             dotF = true;
         }else if((s[i] < '0' || s[i] > '9') && v1Size > v2Size){
-            if(s[i] == 'e'){
+            if(s[i] == 'e' || s[i] == 'E'){
                 //if(letterEF){
                 //    cout<<"?????????? not sureee"; /////////////////////////////////////////////////////////
                 //}
                 //letterEF = true;
             }
             else {
-                cout<< "there is letter where it shoudnt be in the file";
+                cout <<s[i];
+                cout << "  there is letter where it shoudnt be in the file \n";
                 exit(1);
             }
         } else if(s[i] >= '0' && s[i] <= '9') {
