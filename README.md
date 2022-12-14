@@ -21,9 +21,12 @@ write the order: "make" than press enter
 after that enter "./a.out ..." -  the ...is for the K path and distance method that need to be added as arguments with
 only one space seperating between them.
 
-/?g++ *.cpp -std=c++11
-
-////a few words about our implementation: we hold an object of distance calculator that has two members - two vectors of real numbers. we use the vector object given by the library for holding conveniently a dynamic size series of numbers, put in by the user.
+a few words about our implementation: we had the distanceCalc class from the previus assignmant.
+the distanceCalc class have 2 vectors and 5 methods of distances so we wraped this method with KnnCalc class.
+the class have as variable obj of distanceCalc class than the proces is from main 
+send k, path, distance type to KnnCalc constructor than launch the program so read one vector from user to v1 from distanceCalc.
+than run on the given file and set every line as v2 of distanceCalc and get the given distance type.
+return the most return type and wait for new vector to repeat the program endlessly.
 
 we execute several validation tests for the user's input before safely storing his chosen numbers in the vector.
 these validations are made to ensure a future legal calculation for each of the calculator 5 distance types.
