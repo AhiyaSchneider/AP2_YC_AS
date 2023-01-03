@@ -6,10 +6,11 @@ path to a obj_classified.csv file - path (relative or direct) to a file of class
 type of distance - a type of distance between 2 vectors.
 
 user is required to enter input of a vector of numbers: after writing a number - press the space key to move on. 
-after insserting the vector the program will run on the given file and return from the k nearest the most return type. 
+after inserting the vector the program will run on the given file and return from the k nearest the most return type. 
 then wait to another vector and do the same endlessly.
 
  for any ilegal input - the program will show you a message and finish immediately!
+ (including inaccurate representation of numbers. for example = ".3" will not be accetped! i don't know if your intention is indeed 0.3 or some other idea)
 
 instructions for running the program from terminal:
 
